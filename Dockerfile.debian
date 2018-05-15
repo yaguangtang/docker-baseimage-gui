@@ -1,13 +1,13 @@
 #
 # baseimage-gui Dockerfile
 #
-# https://github.com/jlesage/docker-baseimage-gui
+# http://github.com/jlesage/docker-baseimage-gui
 #
 
-ARG BASEIMAGE=unknown
+ARG BASEIMAGE=jlesage/baseimage:ubuntu-16.04
 
 # Pull base image.
-FROM ${BASEIMAGE}
+FROM jlesage/baseimage:ubuntu-16.04
 
 # Define software versions.
 ARG LIBVNCSERVER_VERSION=9029b86
@@ -19,13 +19,13 @@ ARG JQUERY_VERSION=3.2.1
 ARG JQUERY_UI_TOUCH_PUNCH_VERSION=4bc0091
 
 # Define software download URLs.
-ARG LIBVNCSERVER_URL=https://github.com/jlesage/libvncserver/archive/${LIBVNCSERVER_VERSION}.tar.gz
-ARG X11VNC_URL=https://github.com/jlesage/x11vnc/archive/${X11VNC_VERSION}.tar.gz
-ARG NOVNC_URL=https://github.com/jlesage/novnc/archive/${NOVNC_VERSION}.tar.gz
-ARG BOOTSTRAP_URL=https://github.com/twbs/bootstrap/releases/download/v${BOOTSTRAP_VERSION}/bootstrap-${BOOTSTRAP_VERSION}-dist.zip
-ARG FONTAWESOME_URL=https://fontawesome.com/v${FONTAWESOME_VERSION}/assets/font-awesome-${FONTAWESOME_VERSION}.zip
-ARG JQUERY_URL=https://code.jquery.com/jquery-${JQUERY_VERSION}.min.js
-ARG JQUERY_UI_TOUCH_PUNCH_URL=https://raw.github.com/furf/jquery-ui-touch-punch/${JQUERY_UI_TOUCH_PUNCH_VERSION}/jquery.ui.touch-punch.min.js
+ARG LIBVNCSERVER_URL=http://github.com/jlesage/libvncserver/archive/${LIBVNCSERVER_VERSION}.tar.gz
+ARG X11VNC_URL=http://github.com/jlesage/x11vnc/archive/${X11VNC_VERSION}.tar.gz
+ARG NOVNC_URL=http://github.com/jlesage/novnc/archive/${NOVNC_VERSION}.tar.gz
+ARG BOOTSTRAP_URL=http://github.com/twbs/bootstrap/releases/download/v${BOOTSTRAP_VERSION}/bootstrap-${BOOTSTRAP_VERSION}-dist.zip
+ARG FONTAWESOME_URL=http://fontawesome.com/v${FONTAWESOME_VERSION}/assets/font-awesome-${FONTAWESOME_VERSION}.zip
+ARG JQUERY_URL=http://code.jquery.com/jquery-${JQUERY_VERSION}.min.js
+ARG JQUERY_UI_TOUCH_PUNCH_URL=http://raw.github.com/furf/jquery-ui-touch-punch/${JQUERY_UI_TOUCH_PUNCH_VERSION}/jquery.ui.touch-punch.min.js
 
 # Define working directory.
 WORKDIR /tmp
@@ -34,7 +34,7 @@ WORKDIR /tmp
 RUN \
     add-pkg --virtual build-dependencies curl ca-certificates && \
     . /etc/os-release && \
-    curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key --keyring /etc/apt/trusted.gpg.d/nodesource.gpg add - && \
+    curl -s http://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key --keyring /etc/apt/trusted.gpg.d/nodesource.gpg add - && \
     echo "deb http://deb.nodesource.com/node_7.x $VERSION_CODENAME main" > /etc/apt/sources.list.d/nodesource.list && \
     echo "deb-src http://deb.nodesource.com/node_7.x $VERSION_CODENAME main" >> /etc/apt/sources.list.d/nodesource.list && \
     # Cleanup
@@ -233,7 +233,7 @@ RUN \
 
 # Generate and install favicons.
 RUN \
-    APP_ICON_URL=https://github.com/jlesage/docker-templates/raw/master/jlesage/images/generic-app-icon.png && \
+    APP_ICON_URL=http://github.com/jlesage/docker-templates/raw/master/jlesage/images/generic-app-icon.png && \
     install_app_icon.sh "$APP_ICON_URL"
 
 # Set environment variables.
@@ -252,5 +252,5 @@ LABEL \
       org.label-schema.name="baseimage-gui" \
       org.label-schema.description="A minimal docker baseimage to ease creation of X graphical application containers" \
       org.label-schema.version="${IMAGE_VERSION}" \
-      org.label-schema.vcs-url="https://github.com/jlesage/docker-baseimage-gui" \
+      org.label-schema.vcs-url="http://github.com/jlesage/docker-baseimage-gui" \
       org.label-schema.schema-version="1.0"
