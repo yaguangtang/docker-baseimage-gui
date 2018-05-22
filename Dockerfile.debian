@@ -4,10 +4,10 @@
 # http://github.com/jlesage/docker-baseimage-gui
 #
 
-ARG BASEIMAGE=jlesage/baseimage:ubuntu-16.04
+ARG BASEIMAGE=baseimage:ubuntu-16.04
 
 # Pull base image.
-FROM jlesage/baseimage:ubuntu-16.04
+FROM baseimage:ubuntu-16.04
 
 # Define software versions.
 ARG LIBVNCSERVER_VERSION=9029b86

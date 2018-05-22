@@ -1,2 +1,2 @@
 DOCKERFILE=Dockerfile.debian
-BASEIMAGE=jlesage/baseimage:ubuntu-16.04
+BASEIMAGE=baseimage:ubuntu-16.04
