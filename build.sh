@@ -65,7 +65,7 @@ done
 
 for DOCKER_TAG in $DOCKER_TAGS; do
     # Export build variables.
-    export DOCKER_REPO=jlesage/baseimage-gui
+    export DOCKER_REPO=baseimage-gui
     export DOCKER_TAG=$DOCKER_TAG
     export USE_DOCKER_BUILD_CACHE=${USE_DOCKER_BUILD_CACHE:-1}
 
